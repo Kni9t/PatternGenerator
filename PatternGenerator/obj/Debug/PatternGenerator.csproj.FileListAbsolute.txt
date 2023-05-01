@@ -1,0 +1,11 @@
+E:\3-For programming\GitHub\PatternGenerator\PatternGenerator\bin\Debug\PatternGenerator.exe.config
+E:\3-For programming\GitHub\PatternGenerator\PatternGenerator\bin\Debug\PatternGenerator.exe
+E:\3-For programming\GitHub\PatternGenerator\PatternGenerator\bin\Debug\PatternGenerator.pdb
+E:\3-For programming\GitHub\PatternGenerator\PatternGenerator\obj\Debug\PatternGenerator.csproj.AssemblyReference.cache
+E:\3-For programming\GitHub\PatternGenerator\PatternGenerator\obj\Debug\PatternGenerator.csproj.SuggestedBindingRedirects.cache
+E:\3-For programming\GitHub\PatternGenerator\PatternGenerator\obj\Debug\PatternGenerator.Form1.resources
+E:\3-For programming\GitHub\PatternGenerator\PatternGenerator\obj\Debug\PatternGenerator.Properties.Resources.resources
+E:\3-For programming\GitHub\PatternGenerator\PatternGenerator\obj\Debug\PatternGenerator.csproj.GenerateResource.cache
+E:\3-For programming\GitHub\PatternGenerator\PatternGenerator\obj\Debug\PatternGenerator.csproj.CoreCompileInputs.cache
+E:\3-For programming\GitHub\PatternGenerator\PatternGenerator\obj\Debug\PatternGenerator.exe
+E:\3-For programming\GitHub\PatternGenerator\PatternGenerator\obj\Debug\PatternGenerator.pdb
