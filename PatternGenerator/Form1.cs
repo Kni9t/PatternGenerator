@@ -18,35 +18,32 @@ namespace PatternGenerator
         }
 
         const int SIZE = 5;
-        int MapHeight, MapWidth;
-        SquareGrid SG;
+        CellularAutomaton SA;
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            MapHeight = pictureBox1.Height / SIZE;
-            MapWidth = pictureBox1.Width / SIZE;
+            SA = new CellularAutomaton(pictureBox1.Width / SIZE, SIZE);
 
-            SG = new SquareGrid(MapHeight, MapWidth, SIZE);
+
+            Bitmap BitMap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+            Graphics G = Graphics.FromImage(BitMap);
+
+            SA.SetRule(110);
+            SA.StartIteration(100, G);
+
+            pictureBox1.Image = BitMap;
         }
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-            SG.MouseActive(e);
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            SG.UpdateLogic();
         }
          
         private void timer2_Tick(object sender, EventArgs e)
         {
-            Bitmap BitMap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-            Graphics G = Graphics.FromImage(BitMap);
-
-            SG.UpdatePrint(G);
-
-            pictureBox1.Image = BitMap;
         }
     }
 }
