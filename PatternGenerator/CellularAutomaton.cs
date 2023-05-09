@@ -95,7 +95,7 @@ namespace PatternGenerator
             for (int i = 0; i < buf.Length; i++)
                 Line[i] = buf[i];
         }
-        void UpdateLogicUPD()
+        void UpdateLogicUPD() // сделать генератор правил для общего случая
         {
             RuleUnit[] ruleUnit = new RuleUnit[(int)Math.Pow(2, RuleSize)];
 
