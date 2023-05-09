@@ -22,20 +22,19 @@ namespace PatternGenerator
 
         void Print(int Rule = 110, int IterationCount = 100)
         {
-            SA = new CellularAutomaton(pictureBox1.Width / SIZE, SIZE);
-
             Bitmap BitMap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             Graphics G = Graphics.FromImage(BitMap);
 
-            SA.SetRule(Rule);
-            SA.StartIteration(IterationCount, G);
+            SA.StartIteration(G, IterationCount);
 
             pictureBox1.Image = BitMap;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            SA = new CellularAutomaton(pictureBox1.Width / SIZE, SIZE);
+            SA.SetRule();
+            label1.Text = SA.Rule.ToString();
         }
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
@@ -44,11 +43,25 @@ namespace PatternGenerator
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            Print();
+            
         }
          
         private void timer2_Tick(object sender, EventArgs e)
         {
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SA = new CellularAutomaton(pictureBox1.Width / SIZE, SIZE);
+            int StartPosition = 0;
+
+            if (checkBox1.Checked) StartPosition = 1;
+            else StartPosition = 0;
+
+            SA.SetRule(int.Parse(textBox1.Text), StartPosition);
+
+            label1.Text = SA.Rule.ToString();
+            Print();
         }
     }
 }

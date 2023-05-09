@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,16 +13,21 @@ namespace PatternGenerator
         Random R = new Random();
         int SquareSize;
         bool[] Line, RuleLine;
+        public int Rule;
 
         public CellularAutomaton(int LengthLine = 50, int SquareSize = 10)
         {
             Line = new bool[LengthLine];
             this.SquareSize = SquareSize;
-            for (int i = 0; i < LengthLine; i++) if (R.Next(0, 101) <= 25) Line[i] = true;
         }
-        public void SetRule(int Rule)
+        void RandomFill()
+        {
+            for (int i = 0; i < Line.Length; i++) if (R.Next(0, 101) <= 25) Line[i] = true;
+        }
+        public void SetRule(int Rule = 110, int Start = 1)
         {
             int i = 0;
+            this.Rule = Rule;
             RuleLine = new bool[8];
 
             if (Convert.ToString(Rule, 2).Length < 8) // Корректировка на незначащие нули
@@ -36,6 +42,8 @@ namespace PatternGenerator
                 else RuleLine[i] = true;
                 i++;
             }
+            if (Start == 1) RandomFill();
+            if (Start == 0) Line[Line.Length / 2] = true;
         }
         void UpdateLogic()
         {
@@ -66,7 +74,7 @@ namespace PatternGenerator
             for (int i = 0; i < buf.Length; i++)
                 Line[i] = buf[i];
         }
-        public void StartIteration(int CountIteration, Graphics G)
+        public void StartIteration (Graphics G, int CountIteration = 100)
         {
             for (int i = 0; i < CountIteration; i++)
             {
