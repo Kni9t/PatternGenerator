@@ -11,10 +11,29 @@ namespace PatternGenerator
     public class CellularAutomaton
     {
         Random R = new Random();
-        int SquareSize;
+        int SquareSize, RuleSize;
         bool[] Line, RuleLine;
         public int Rule;
+        struct RuleUnit
+        {
+            public bool[] RuleLine;
+            public bool Rule; 
+        }
+        string ConvertToByteString(int Number)
+        {
+            string result = "";
 
+            if (Convert.ToString(Number, 2).Length < RuleSize) // Корректировка на незначащие нули
+                for (int i = 0; i < (RuleSize - Convert.ToString(Number, 2).Length); i++)
+                {
+                    result += "0";
+                }
+
+            result += Convert.ToString(Number, 2);
+
+            return result;
+
+        }
         public CellularAutomaton(int LengthLine = 50, int SquareSize = 10)
         {
             Line = new bool[LengthLine];
@@ -24,8 +43,9 @@ namespace PatternGenerator
         {
             for (int i = 0; i < Line.Length; i++) if (R.Next(0, 101) <= 25) Line[i] = true;
         }
-        public void SetRule(int Rule = 110, int Start = 1)
+        public void SetRule(int Rule = 110, int Start = 1, int RuleSize = 3)
         {
+            this.RuleSize = RuleSize;
             int i = 0;
             this.Rule = Rule;
             RuleLine = new bool[8];
@@ -42,6 +62,7 @@ namespace PatternGenerator
                 else RuleLine[i] = true;
                 i++;
             }
+
             if (Start == 1) RandomFill();
             if (Start == 0) Line[Line.Length / 2] = true;
         }
@@ -73,6 +94,16 @@ namespace PatternGenerator
 
             for (int i = 0; i < buf.Length; i++)
                 Line[i] = buf[i];
+        }
+        void UpdateLogicUPD()
+        {
+            RuleUnit[] ruleUnit = new RuleUnit[(int)Math.Pow(2, RuleSize)];
+
+            for (int i = 0; i < ruleUnit.Length; i++)
+            {
+                bool[] buf = new bool[RuleSize];
+
+            }
         }
         public void StartIteration (Graphics G, int CountIteration = 100)
         {

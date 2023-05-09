@@ -34,20 +34,8 @@ namespace PatternGenerator
         {
             SA = new CellularAutomaton(pictureBox1.Width / SIZE, SIZE);
             SA.SetRule();
+            textBox1.Text = SA.Rule + "";
             label1.Text = "Текущее правило: " + SA.Rule.ToString();
-        }
-
-        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
-        {
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            
-        }
-         
-        private void timer2_Tick(object sender, EventArgs e)
-        {
         }
 
         private void button1_Click(object sender, EventArgs e)
