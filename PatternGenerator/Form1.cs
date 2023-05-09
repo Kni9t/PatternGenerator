@@ -17,21 +17,25 @@ namespace PatternGenerator
             InitializeComponent();
         }
 
-        const int SIZE = 5;
+        const int SIZE = 3;
         CellularAutomaton SA;
 
-        private void Form1_Load(object sender, EventArgs e)
+        void Print(int Rule = 110, int IterationCount = 100)
         {
             SA = new CellularAutomaton(pictureBox1.Width / SIZE, SIZE);
-
 
             Bitmap BitMap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             Graphics G = Graphics.FromImage(BitMap);
 
-            SA.SetRule(110);
-            SA.StartIteration(100, G);
+            SA.SetRule(Rule);
+            SA.StartIteration(IterationCount, G);
 
             pictureBox1.Image = BitMap;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
@@ -40,6 +44,7 @@ namespace PatternGenerator
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            Print();
         }
          
         private void timer2_Tick(object sender, EventArgs e)
