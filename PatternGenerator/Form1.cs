@@ -34,7 +34,7 @@ namespace PatternGenerator
         {
             SA = new CellularAutomaton(pictureBox1.Width / SIZE, SIZE);
             SA.SetRule();
-            label1.Text = SA.Rule.ToString();
+            label1.Text = "Текущее правило: " + SA.Rule.ToString();
         }
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
@@ -60,7 +60,7 @@ namespace PatternGenerator
 
             SA.SetRule(int.Parse(textBox1.Text), StartPosition);
 
-            label1.Text = SA.Rule.ToString();
+            label1.Text = "Текущее правило: " + SA.Rule.ToString();
             Print();
         }
     }
